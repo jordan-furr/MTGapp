@@ -48,13 +48,12 @@ class CardController {
     }
     
     func getCard(card: Card, completion: @escaping (Result<Card, CardError>) -> Void ){
-        guard let baseURL = baseURL, let id = try? card.id else { return completion(.failure(.invalidURL))}
+        guard let baseURL = baseURL else { return completion(.failure(.invalidURL))}
+        let id = card.id
         
         let cardsURL = baseURL.appendingPathComponent(cardsEndpoint)
         let finalURL = cardsURL.appendingPathComponent(id)
-        
-        var request = URLRequest(url: finalURL)
-        request.setValue(contentTypeValue, forHTTPHeaderField: contentTypeKey)
+        print(finalURL)
         
         URLSession.shared.dataTask(with: finalURL) { (data, _, error) in
             if let error = error {
@@ -62,7 +61,17 @@ class CardController {
                 return completion(.failure(.thrown(error)))
             }
             
+            guard let data = data else { return completion(.failure(.noData))}
             
+            //decode
+            do {
+                let responseArray = try JSONDecoder().decode([Card].self, from: data)
+                guard let card = responseArray.first else { return completion(.failure(.noData))}
+                return completion(.success(card))
+            } catch {
+                print(error, error.localizedDescription)
+                return completion(.failure(.thrown(error)))
+            }
         }.resume()
     }
 }
