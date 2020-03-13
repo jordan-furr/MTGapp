@@ -11,8 +11,10 @@ import Foundation
 struct Card: Codable {
     let name: String
     let text: String
-    let power: Int
-    let toughness: Int
-    let imageURL: URL
-    let id: String
+}
+
+
+
+struct Deck: Codable {
+    let cards: [Card]
 }

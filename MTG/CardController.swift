@@ -23,8 +23,9 @@ class CardController {
         guard let baseURL = baseURL else { return completion(.failure(.invalidURL))}
         let cardsURL = baseURL.appendingPathComponent(cardsEndpoint)
         var urlComponents = URLComponents(url: cardsURL, resolvingAgainstBaseURL: true)
-        urlComponents?.queryItems = [URLQueryItem(name: rarityQuery, value: "Mythic")]
+        urlComponents?.queryItems = [URLQueryItem(name: rarityQuery, value: "mythic")]
         guard let finalURL = urlComponents?.url else { return completion(.failure(.invalidURL))}
+        print(finalURL)
         
         var request = URLRequest(url: finalURL)
         request.setValue(contentTypeValue, forHTTPHeaderField: contentTypeKey)
@@ -37,37 +38,10 @@ class CardController {
             
             guard let data = data else { return completion(.failure(.noData))}
             do {
-                let cards = try JSONDecoder().decode([Card].self, from: data)
+                let deck = try JSONDecoder().decode(Deck.self, from: data)
+                let cards = deck.cards
                 self.cards = cards
                 return completion(.success(cards))
-            } catch {
-                print(error, error.localizedDescription)
-                return completion(.failure(.thrown(error)))
-            }
-        }.resume()
-    }
-    
-    func getCard(card: Card, completion: @escaping (Result<Card, CardError>) -> Void ){
-        guard let baseURL = baseURL else { return completion(.failure(.invalidURL))}
-        let id = card.id
-        
-        let cardsURL = baseURL.appendingPathComponent(cardsEndpoint)
-        let finalURL = cardsURL.appendingPathComponent(id)
-        print(finalURL)
-        
-        URLSession.shared.dataTask(with: finalURL) { (data, _, error) in
-            if let error = error {
-                print(error,error.localizedDescription)
-                return completion(.failure(.thrown(error)))
-            }
-            
-            guard let data = data else { return completion(.failure(.noData))}
-            
-            //decode
-            do {
-                let responseArray = try JSONDecoder().decode([Card].self, from: data)
-                guard let card = responseArray.first else { return completion(.failure(.noData))}
-                return completion(.success(card))
             } catch {
                 print(error, error.localizedDescription)
                 return completion(.failure(.thrown(error)))

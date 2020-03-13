@@ -17,6 +17,8 @@
 		C585CBEF241A945700F05C98 /* CardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C585CBEE241A945700F05C98 /* CardTableViewController.swift */; };
 		C585CBF1241A947000F05C98 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C585CBF0241A947000F05C98 /* DetailViewController.swift */; };
 		C585CBF3241A952300F05C98 /* CardError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C585CBF2241A952300F05C98 /* CardError.swift */; };
+		C585CBF7241AC50600F05C98 /* PresentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C585CBF6241AC50600F05C98 /* PresentError.swift */; };
+		C585CBF9241ACEB300F05C98 /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C585CBF8241ACEB300F05C98 /* CardTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		C585CBEE241A945700F05C98 /* CardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableViewController.swift; sourceTree = "<group>"; };
 		C585CBF0241A947000F05C98 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C585CBF2241A952300F05C98 /* CardError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardError.swift; sourceTree = "<group>"; };
+		C585CBF6241AC50600F05C98 /* PresentError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentError.swift; sourceTree = "<group>"; };
+		C585CBF8241ACEB300F05C98 /* CardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,8 +71,10 @@
 				C50C8DF5241A8DB700D60B81 /* Main.storyboard */,
 				C50C8E04241A93E000D60B81 /* Card.swift */,
 				C585CBF2241A952300F05C98 /* CardError.swift */,
+				C585CBF6241AC50600F05C98 /* PresentError.swift */,
 				C585CBEC241A944800F05C98 /* CardController.swift */,
 				C585CBEE241A945700F05C98 /* CardTableViewController.swift */,
+				C585CBF8241ACEB300F05C98 /* CardTableViewCell.swift */,
 				C585CBF0241A947000F05C98 /* DetailViewController.swift */,
 				C50C8E03241A8DC800D60B81 /* Resources */,
 			);
@@ -158,12 +164,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C585CBF7241AC50600F05C98 /* PresentError.swift in Sources */,
 				C50C8DF0241A8DB700D60B81 /* AppDelegate.swift in Sources */,
 				C585CBED241A944800F05C98 /* CardController.swift in Sources */,
 				C50C8E05241A93E000D60B81 /* Card.swift in Sources */,
 				C585CBF1241A947000F05C98 /* DetailViewController.swift in Sources */,
 				C585CBEF241A945700F05C98 /* CardTableViewController.swift in Sources */,
 				C585CBF3241A952300F05C98 /* CardError.swift in Sources */,
+				C585CBF9241ACEB300F05C98 /* CardTableViewCell.swift in Sources */,
 				C50C8DF2241A8DB700D60B81 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
